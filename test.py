@@ -5,7 +5,6 @@ import csv
 from collections import defaultdict
 import numpy as np
 
-
 # Load timezone information from the third table
 timezone_df = pd.read_csv("timezones.csv")
 timezone_dict = dict(zip(timezone_df.store_id, timezone_df.timezone_str))
@@ -64,10 +63,7 @@ df["day_y"] = df["day_y"].astype("Int64")
 df = df.query("day_x == day_y")
 df = df[(df["time"] >= df["start_time_only"]) & (df["time"] < df["end_time_only"])]
 
-# print(df)
-
 df.to_csv("filtered_data.csv")
-
 
 # read in data
 data = pd.read_csv("filtered_data.csv")
@@ -143,9 +139,6 @@ for store in active_stores["store_id"]:
     # loop through each 15-minute interval in business hours
     for interval in business_hours:
         # get start and end times for current interval
-        # current_date = pd.Timestamp.utcnow().tz_localize(None).date()
-        # print("timestamp", current_time.)
-        # print((current_time_only), interval)
         start_time = pd.Timestamp.combine(current_time_only, interval).tz_localize(
             "UTC"
         )
@@ -197,7 +190,5 @@ for store in active_stores["store_id"]:
         store_downtime_interpolated.iloc[-672:].sum().sum()
     )
 
-# display results
-print(active_stores)
-
+# store the results into results.csv
 active_stores.to_csv("results.csv")
