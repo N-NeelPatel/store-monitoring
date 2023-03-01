@@ -112,7 +112,7 @@ def get_statuses_between_local(
     return [(s, s.timestamp_utc.astimezone(timezone_obj)) for s in statuses]
 
 
-def calculate_uptime_downtime_local():
+def get_uptime_downtime_local():
     # Load timezone information from the third table
     timezone_df = pd.read_csv("timezones.csv")
     timezone_dict = dict(zip(timezone_df.store_id, timezone_df.timezone_str))
