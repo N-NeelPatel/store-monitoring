@@ -2,7 +2,7 @@ from typing import List, Tuple
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 from pytz import timezone
-from .models import Store, BusinessHour, StoreTimezone, Status
+from schema import Store, BusinessHour, StoreTimezone, Status
 
 
 def get_stores(session: Session) -> List[Store]:
