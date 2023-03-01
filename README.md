@@ -28,4 +28,13 @@ get_report
 - Parameters: report_id
 - Response: CSV file with the following schema:
 | store_id | report_date | uptime | downtime |
+This API checks the status of the report generation process. If the process is still running, it returns "Running" as the output. If the process is complete, it returns "Complete" along with the CSV file.
 
+## Code Structure
+The code for this project is organized into the following files:
+
+- `main.py`: This file contains the FastAPI application and the two APIs, trigger_report and get_report.
+- `database.py`: This file contains functions to create the database tables and load the CSV data into the tables.
+- `crud.py`: This file contains the SQL queries for joining the tables and calculating the uptime and downtime for each store.
+- `utils.py`: This file contains utility functions for converting timestamps to local timezones, calculating the business hours interval, and interpolating the uptime and downtime for each store.
+- `schema.py`: This file contains the schema for the models used.
