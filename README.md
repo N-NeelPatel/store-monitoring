@@ -27,7 +27,7 @@ get_report
 - Method: GET
 - Parameters: report_id
 - Response: CSV file with the following schema:
-| store_id | report_date | uptime | downtime |
+store_id | uptime_last_hour(in minutes) | uptime_last_day(in hours) | update_last_week(in hours) | downtime_last_hour(in minutes) | downtime_last_day(in hours) | downtime_last_week(in hours)
 This API checks the status of the report generation process. If the process is still running, it returns "Running" as the output. If the process is complete, it returns "Complete" along with the CSV file.
 
 ## Code Structure
